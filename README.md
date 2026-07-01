@@ -491,7 +491,3 @@ https://linkedin.com/in/sunny-chaudhary
 ```
 
 ---
-
-# License
-
-This project was developed as part of the SHL AI Engineering Internship Assignment and is intended for educational and evaluation purposes.
