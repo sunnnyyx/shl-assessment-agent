@@ -1,4 +1,18 @@
+# Virtual Environment
 venv/
-__pycache__/
+
+# Environment Variables
 .env
-*.pyc
+
+# Python
+__pycache__/
+*.py[cod]
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Chroma Vector DB
+chroma_db/

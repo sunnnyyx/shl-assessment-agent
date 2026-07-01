@@ -196,7 +196,6 @@ Only recommend assessments from this retrieved list.
         return {
             "reply": f"Error: {str(e)}",
             "recommendations": [],
-            "conversation_type": "error",
             "end_of_conversation": False,
         }
 
@@ -227,8 +226,7 @@ Only recommend assessments from this retrieved list.
             })
 
     return {
-        "reply": content,
-        "recommendations": recommendations,
-        "conversation_type": conversation_type.value,
-        "end_of_conversation": conversation_type == ConversationType.GOODBYE,
-    }
+    "reply": content,
+    "recommendations": recommendations,
+    "end_of_conversation": conversation_type == ConversationType.GOODBYE,
+}
