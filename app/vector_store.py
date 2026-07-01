@@ -15,7 +15,7 @@ def build_vector_store():
 
     for assessment in assessments:
         text = f"""
-        Name: {assessment.get("name")}
+        Name: {assessment.get("title")}
         Description: {assessment.get("description")}
         Duration: {assessment.get("duration")}
         Remote Testing: {assessment.get("remote_testing")}
@@ -27,7 +27,7 @@ def build_vector_store():
             Document(
                 page_content=text,
                 metadata={
-                    "name": assessment.get("name"),
+                    "name": assessment.get("title"),
                     "url": assessment.get("url")
                 }
             )

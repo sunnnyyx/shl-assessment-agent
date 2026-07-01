@@ -6,5 +6,4 @@ results = retrieve_assessments(
 
 for r in results:
     print("=" * 50)
-    print(r["name"])
-    print(r["url"])
+    print(r)

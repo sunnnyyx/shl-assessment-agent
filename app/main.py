@@ -1,4 +1,7 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
+from typing import List
+from app.agent import chat
 
 app = FastAPI(
     title="SHL Assessment Recommender",
@@ -18,3 +21,22 @@ def health():
     return {
         "status": "ok"
     }
+
+
+class Message(BaseModel):
+    role: str
+    content: str
+
+
+class ChatRequest(BaseModel):
+    messages: List[Message]
+
+
+@app.post("/chat")
+def chat_endpoint(request: ChatRequest):
+
+    response = chat(
+        [m.model_dump() for m in request.messages]
+    )
+
+    return response
