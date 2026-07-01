@@ -106,7 +106,7 @@ Built using FastAPI, ChromaDB, LangChain, HuggingFace Embeddings, and DeepSeek (
 Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/shl-assessment-recommender.git
+git clone https://github.com/sunnnyyx/shl-assessment-agent
 
 cd shl-assessment-recommender
 ```
