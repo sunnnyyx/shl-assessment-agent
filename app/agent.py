@@ -262,7 +262,6 @@ def chat(messages):
                 "feel free to ask. Have a great day!"
             ),
             "recommendations": [],
-            "conversation_type": conversation_type.value,
             "end_of_conversation": True,
         }
 
@@ -278,7 +277,6 @@ def chat(messages):
                 "and help recruiters choose the right assessment for a role."
             ),
             "recommendations": [],
-            "conversation_type": conversation_type.value,
             "end_of_conversation": False,
         }
 
@@ -295,7 +293,6 @@ def chat(messages):
                 "• What skills or competencies would you like to assess?"
             ),
             "recommendations": [],
-            "conversation_type": conversation_type.value,
             "end_of_conversation": False,
         }
 
@@ -409,6 +406,5 @@ Do not ask again for information already provided.
     return {
         "reply": content,
         "recommendations": recommendations,
-        "conversation_type": conversation_type.value,
         "end_of_conversation": conversation_type == ConversationType.GOODBYE,
     }
