@@ -128,9 +128,6 @@ def detect_intent(messages):
 
 
 def needs_clarification(messages):
-    """
-    Returns True only if the ENTIRE conversation never specifies a role.
-    """
     if not messages:
         return True
 
@@ -148,32 +145,47 @@ def needs_clarification(messages):
         "graduate",
         "intern",
         "sales",
-        "leader",
-        "executive",
-        "consultant",
+        "customer service",
         "support",
-        "administrator",
-        "technician",
         "finance",
-        "hr",
         "marketing",
-        "customer"
+        "hr"
     ]
 
-    # If ANY previous user message mentioned a role, we already have enough information.
-    if any(role in conversation for role in role_keywords):
+    skill_keywords = [
+        "python",
+        "java",
+        "sql",
+        "coding",
+        "programming",
+        "backend",
+        "frontend",
+        "database",
+        "leadership",
+        "communication",
+        "personality",
+        "aptitude",
+        "verbal",
+        "numerical",
+        "technical"
+    ]
+
+    # Enough information if ANY role OR skill is already present
+    if (
+        any(role in conversation for role in role_keywords)
+        or any(skill in conversation for skill in skill_keywords)
+    ):
         return False
+
+    latest = messages[-1]["content"].lower()
 
     vague_requests = [
         "assessment",
         "test",
         "recommend",
-        "suggest",
-        "hire",
-        "hiring"
+        "suggest"
     ]
 
-    latest = messages[-1]["content"].lower()
     return any(word in latest for word in vague_requests)
 
 
