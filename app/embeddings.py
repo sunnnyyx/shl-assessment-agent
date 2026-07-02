@@ -1,21 +1,20 @@
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_openai import OpenAIEmbeddings
+from app.config import OPENROUTER_API_KEY
 
 _embeddings = None
 
 def get_embeddings():
     global _embeddings
 
-    print("Step 1")
-
     if _embeddings is None:
-        print("Step 2")
+        print("Loading OpenRouter embeddings...", flush=True)
 
-        _embeddings = HuggingFaceEmbeddings(
-            model_name="sentence-transformers/all-MiniLM-L6-v2"
+        _embeddings = OpenAIEmbeddings(
+            model="openai/text-embedding-3-small",
+            openai_api_key=OPENROUTER_API_KEY,
+            openai_api_base="https://openrouter.ai/api/v1",
         )
 
-        print("Step 3")
-
-    print("Step 4")
+        print("Embeddings ready!", flush=True)
 
     return _embeddings

@@ -2,11 +2,17 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
 from app.agent import chat
+from app.retriever import get_db
 
 app = FastAPI(
     title="SHL Assessment Recommender",
     version="1.0.0"
 )
+
+
+@app.on_event("startup")
+def load_resources():
+    get_db()
 
 
 @app.get("/health")

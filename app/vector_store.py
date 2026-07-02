@@ -1,10 +1,9 @@
 import json
-import chromadb
 
 from langchain_core.documents import Document
 from langchain_chroma import Chroma
 
-from app.embeddings import embeddings
+from app.embeddings import get_embeddings
 
 
 def build_vector_store():
@@ -33,9 +32,9 @@ def build_vector_store():
             )
         )
 
-    db = Chroma.from_documents(
+    Chroma.from_documents(
         documents=documents,
-        embedding=embeddings,
+        embedding=get_embeddings(),
         persist_directory="chroma_db"
     )
 

@@ -8,14 +8,8 @@ langchain
 langchain-core
 langchain-community
 langchain-chroma
-langchain-huggingface
+langchain-openai
 
 chromadb
 
-sentence-transformers
-
 pydantic
-
-playwright
-beautifulsoup4
-lxml
