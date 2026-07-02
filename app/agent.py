@@ -308,7 +308,11 @@ def chat(messages):
         history += f"{msg['role'].capitalize()}: {msg['content']}\n"
 
     # Use clean user message trace content for high quality search catalog vector retrieval matching
+    print("Before retrieval", flush=True)
+
     assessments = retrieve_assessments(user_context, k=20)
+
+    print("After retrieval", flush=True)
 
     context = "\n\n".join(
         [
@@ -363,11 +367,15 @@ Do not ask again for information already provided.
         print(json.dumps(chat_messages, indent=2))
         print("=" * 80)
 
+        print("Calling OpenRouter...", flush=True)
+
         response = client.chat.completions.create(
             model="deepseek/deepseek-chat-v3",
             messages=chat_messages,
             temperature=0.3,
         )
+
+        print("OpenRouter returned!", flush=True)
 
         llm_response = response.choices[0].message.content
     except Exception as e:

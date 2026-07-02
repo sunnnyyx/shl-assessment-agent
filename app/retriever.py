@@ -6,11 +6,17 @@ _db = None
 def get_db():
     global _db
 
+    print("Entering get_db()", flush=True)
+
     if _db is None:
+        print("Creating Chroma DB...", flush=True)
+
         _db = Chroma(
             persist_directory="chroma_db",
             embedding_function=get_embeddings()
         )
+
+        print("Chroma DB ready!", flush=True)
 
     return _db
 
