@@ -5,13 +5,17 @@ _embeddings = None
 def get_embeddings():
     global _embeddings
 
+    print("Step 1")
+
     if _embeddings is None:
-        print("Loading HuggingFace embeddings...", flush=True)
+        print("Step 2")
 
         _embeddings = HuggingFaceEmbeddings(
             model_name="sentence-transformers/all-MiniLM-L6-v2"
         )
 
-        print("Embeddings loaded!", flush=True)
+        print("Step 3")
+
+    print("Step 4")
 
     return _embeddings
